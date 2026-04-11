@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.React" Version="9.*" />
+    <PackageReference Include="Fable.Elmish.React" Version="5.*" />
+    <!-- <PackageReference Include="Fable.Elmish.OIDC" Version="1.*" /> -->
+    <!-- For local development, uncomment the line below and comment out the Fable.Elmish.OIDC PackageReference above -->
+    <ProjectReference Include="../../oidc/src/Fable.Elmish.OIDC.fsproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <title>Silent Renew</title>
+</head>
+<body>
+  <script>
+    // This page is loaded in a hidden iframe by the OIDC library for silent token renewal.
+    // It reads the authorization code from the URL query string and posts it back
+    // to the parent window via postMessage.
+    (function() {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(window.location.search, window.location.origin);
+      }
+    })();
+  </script>
+</body>
+</html>

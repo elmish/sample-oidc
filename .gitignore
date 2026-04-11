@@ -1,0 +1,8 @@
+build/
+src/out/
+src/bin/
+src/obj/
+node_modules/
+.fake/
+.ionide/
+*.js.map
