@@ -2,7 +2,7 @@
 #r "nuget: Fake.Core.Target, 5.23.1"
 #r "nuget: Fake.IO.FileSystem, 5.23.1"
 #r "nuget: Fake.DotNet.Cli, 5.23.1"
-#r "nuget: Fake.JavaScript.Yarn, 5.23.1"
+#r "nuget: Fake.JavaScript.Npm, 5.23.1"
 #r "nuget: Fake.Tools.Git, 5.23.1"
 
 open Fake.Core
@@ -30,15 +30,15 @@ System.Environment.GetCommandLineArgs()
 |> Context.setExecutionContext
 
 Target.create "Clean" (fun _ ->
-    Shell.cleanDir "build"
+    Shell.cleanDir "out"
 )
 
 Target.create "Install" (fun _ ->
-    Yarn.install id
+    Npm.install id
     projects
     |> Seq.iter (fun s ->
         let dir = IO.Path.GetDirectoryName s
-        DotNet.restore id dir
+        DotNet.restore (fun p -> { p with MSBuildParams = { p.MSBuildParams with DisableInternalBinLog = true } }) dir
     )
 )
 
@@ -58,7 +58,7 @@ Target.create "ReleaseSample" (fun _ ->
     Shell.cleanDir tempDocsDir
     Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
 
-    Shell.copyRecursive "build" tempDocsDir true |> ignore
+    Shell.copyRecursive "out" tempDocsDir true |> ignore
 
     Staging.stageAll tempDocsDir
     Commit.exec tempDocsDir (sprintf "Update generated sample")

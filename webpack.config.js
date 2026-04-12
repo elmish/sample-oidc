@@ -33,7 +33,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.join(__dirname, "./build"),
+        path: path.join(__dirname, "./out"),
         filename: isProduction ? '[name].[contenthash].js' : '[name].js',
         publicPath: isProduction ? "./" : "/"
     },
@@ -54,7 +54,7 @@ module.exports = {
     devServer: {
         port: 8090,
         static: {
-            directory: './build'
+            directory: './out'
         },
         historyApiFallback: true
     },

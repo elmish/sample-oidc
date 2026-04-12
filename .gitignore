@@ -1,5 +1,4 @@
-build/
-src/out/
+**/out/
 src/bin/
 src/obj/
 node_modules/

@@ -7,7 +7,7 @@ Demonstrates [Fable.Elmish.OIDC](https://github.com/elmish/OIDC) with Microsoft 
 ## Prerequisites
 
 - [.NET SDK 10.0+](https://dotnet.microsoft.com/download)
-- [Node.js 18+](https://nodejs.org/) with yarn (`npm i -g yarn`)
+- [Node.js 18+](https://nodejs.org/)
 - An Azure AD tenant (any Microsoft work/school account, or [create a free tenant](https://learn.microsoft.com/entra/fundamentals/create-new-tenant))
 
 ## Azure AD Setup
@@ -59,7 +59,7 @@ Open http://localhost:8090 in your browser.
 dotnet fsi build.fsx
 ```
 
-Output in `build/`.
+Output in `out/`.
 
 ## Deploy to GitHub Pages
 
