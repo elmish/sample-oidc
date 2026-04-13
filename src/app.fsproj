@@ -8,6 +8,6 @@
   <ItemGroup>
     <PackageReference Include="Fable.React" Version="9.*" />
     <PackageReference Include="Fable.Elmish.React" Version="5.*" />
-    <PackageReference Include="Fable.Elmish.OIDC" Version="1.0.0-*" />
+    <PackageReference Include="Fable.Elmish.OIDC" Version="1.0.0-alpha.2" />
   </ItemGroup>
 </Project>

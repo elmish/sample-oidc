@@ -2,7 +2,7 @@
 
 Demonstrates [Fable.Elmish.OIDC](https://github.com/elmish/OIDC) with Microsoft Entra ID (Azure AD).
 
-**[Live demo](https://elmish.github.io/samples-oidc/)**
+**[Live demo](https://elmish.github.io/sample-oidc/)**
 
 ## Prerequisites
 
@@ -32,8 +32,8 @@ The script creates an app registration and prints the `ClientId` and `TenantId` 
    - **Redirect URI:** Select **Single-page application (SPA)**, enter `http://localhost:8090/`
 3. After creation, go to **Authentication** and add these redirect URIs:
    - `http://localhost:8090/silent-renew.html`
-   - `https://elmish.github.io/samples-oidc/`
-   - `https://elmish.github.io/samples-oidc/silent-renew.html`
+   - `https://elmish.github.io/sample-oidc/`
+   - `https://elmish.github.io/sample-oidc/silent-renew.html`
 4. Copy the **Application (client) ID** and **Directory (tenant) ID** from the Overview page
 5. Edit `src/app.fs` and replace the placeholder values:
 

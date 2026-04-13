@@ -10,6 +10,7 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Elmish
 open Elmish.OIDC
+open Elmish.OIDC.Types
 
 [<Literal>]
 let ClientId = "YOUR_CLIENT_ID"
@@ -36,7 +37,7 @@ type UserInfo =
     { name: string
       email: string }
 
-let private getUserInfo (userinfoEndpoint: string) (accessToken: string) : JS.Promise<UserInfo> =
+let private getUserInfo (userinfoEndpoint: string) (accessToken: string) : Async<UserInfo> =
     Fetch.fetch userinfoEndpoint
         [ Fetch.requestHeaders [ Fetch.Types.Authorization $"Bearer {accessToken}" ] ]
     |> Promise.bind (fun resp -> resp.text())
@@ -44,6 +45,7 @@ let private getUserInfo (userinfoEndpoint: string) (accessToken: string) : JS.Pr
         let json = JS.JSON.parse text
         { name = json?name |> Option.ofObj |> Option.defaultValue (string json?sub)
           email = json?preferred_username |> Option.ofObj |> Option.defaultValue "" })
+    |> Async.AwaitPromise
 
 type Model =
     { oidc: Model<UserInfo> }

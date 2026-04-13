@@ -1,5 +1,5 @@
 {
-  "name": "samples-oidc",
+  "name": "sample-oidc",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

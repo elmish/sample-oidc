@@ -15,7 +15,7 @@ open Fake.JavaScript
 open Fake.Tools.Git
 open System
 
-let gitName = "samples-oidc"
+let gitName = "sample-oidc"
 let gitOwner = "elmish"
 let gitHome = sprintf "https://github.com/%s" gitOwner
 
