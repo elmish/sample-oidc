@@ -84,7 +84,7 @@ webpack.config.js   — Webpack bundler configuration
 
 ## How It Works
 
-1. **Init** — The app calls `Oidc.init` which fetches the OpenID Connect discovery document and JWKS from Azure AD
+1. **Init** — The app calls `Api.create` to set up the OIDC module, then `oidc.init` fetches the OpenID Connect discovery document and JWKS from Azure AD
 2. **Login** — Clicking "Sign in" dispatches `LogIn`, which redirects to Azure AD's authorize endpoint with PKCE
 3. **Callback** — Azure AD redirects back with an auth code; the library exchanges it for tokens and validates the ID token's RS256 signature
 4. **Session** — The authenticated session (tokens, claims, userinfo) is stored in `sessionStorage`

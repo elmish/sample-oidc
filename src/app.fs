@@ -33,6 +33,8 @@ let oidcOptions : Options =
       clockSkewSeconds = 300
       allowedAlgorithms = [ "RS256" ] }
 
+let oidc = Api.create oidcOptions
+
 type UserInfo =
     { name: string
       email: string }
@@ -54,17 +56,17 @@ type Msg =
     | OidcMsg of Msg<UserInfo>
 
 let init () =
-    let oidcModel, oidcCmd = Oidc.init oidcOptions
+    let oidcModel, oidcCmd = oidc.init
     { oidc = oidcModel }, Cmd.map OidcMsg oidcCmd
 
 let update (msg: Msg) (model: Model) =
     match msg with
     | OidcMsg m ->
-        let m', c = Oidc.update oidcOptions getUserInfo m model.oidc
+        let m', c = oidc.update getUserInfo m model.oidc
         { model with oidc = m' }, Cmd.map OidcMsg c
 
 let subscribe (model: Model) =
-    Oidc.subscribe model.oidc |> Sub.map "oidc" OidcMsg
+    oidc.subscribe model.oidc |> Sub.map "oidc" OidcMsg
 
 open Fable.React
 open Fable.React.Props
